@@ -4,15 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- Мой проект: учебное задание с классами Student и Faculty -->
     <groupId>com.example.university</groupId>
     <artifactId>student-faculty</artifactId>
     <version>1.0.0</version>
     <name>student-faculty</name>
-    <description>Student/Faculty demo with Lombok, SLF4J, Logback, JUnit 5</description>
+    <description>Test task: Student/Faculty search with exceptions</description>
 
     <properties>
-        <!-- Java 21 (LTS) -->
         <maven.compiler.release>21</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
@@ -32,14 +30,6 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Lombok, чтобы не писать геттеры/equals вручную -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-            <scope>provided</scope>
-        </dependency>
-
         <!-- Логирование: SLF4J API + Logback binding -->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -50,6 +40,18 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.10.2</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 
