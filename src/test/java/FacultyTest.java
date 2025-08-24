@@ -1,5 +1,5 @@
-package com.example.university.domain;
-
+import com.example.university.domain.Faculty;
+import com.example.university.domain.Student;
 import com.example.university.exception.StudentNotFoundException;
 import org.junit.jupiter.api.*;
 
