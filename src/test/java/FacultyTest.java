@@ -1,30 +1,26 @@
-import com.example.university.domain.Faculty;
-import com.example.university.domain.Student;
+package com.example.university.domain;
+
 import com.example.university.exception.StudentNotFoundException;
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ch.qos.logback.classic.Level;
-import ch.qos.logback.classic.Logger;
 
 /**
  * Тесты Faculty: поиск студента по ID.
- * В @BeforeEach включаю DEBUG и печатаю читаемое имя теста.
  */
 @DisplayName("Тесты Faculty: поиск студента по ID")
 class FacultyTest {
+
+    private static final Logger log = LoggerFactory.getLogger(FacultyTest.class);
 
     private Faculty faculty;
 
     @BeforeEach
     void init(TestInfo testInfo) {
-        // Включаем DEBUG для корневого логгера, чтобы видеть сообщения из Faculty
-        Logger root = (Logger) LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
-        root.setLevel(Level.DEBUG);
-
-        root.debug("==> Запуск теста: {}", testInfo.getDisplayName());
+        log.debug("==> Запуск теста: {}", testInfo.getDisplayName());
 
         faculty = new Faculty("CS", java.util.List.of(
                 new Student(1, "Ivan",  "Petrov",  "CS-101", "CS"),
@@ -67,4 +63,5 @@ class FacultyTest {
         assertTrue(faculty.findById(12345L).isEmpty());
     }
 }
+
 
