@@ -6,10 +6,6 @@ import java.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * Faculty: хранит студентов и даёт поиск по id.
- * Логирование сделано через SLF4J (Logback в runtime).
- */
 public class Faculty {
     private static final Logger log = LoggerFactory.getLogger(Faculty.class);
 
