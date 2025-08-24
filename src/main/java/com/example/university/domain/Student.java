@@ -16,7 +16,7 @@ public final class Student {
                    String facultyName) {
 
         if(id <= 0){
-            throw new IllegalArgumentException("id must be greater than 0");
+            throw new IllegalArgumentException("id must be positive");
         }
         this.firstName = requireText(firstName, "firstName");
         this.lastName = requireText(lastName, "lastName");
@@ -26,10 +26,10 @@ public final class Student {
     }
 
     private String requireText(String text, String name) {
-        Objects.requireNonNull(text,name + "text must not be null");
+        Objects.requireNonNull(text,name + " must not be null");
         var trimmedText = text.trim();
         if(trimmedText.isEmpty()){
-            throw new IllegalArgumentException(name + "text must not be empty");
+            throw new IllegalArgumentException(name + " must not be empty");
         }
         return trimmedText;
     }

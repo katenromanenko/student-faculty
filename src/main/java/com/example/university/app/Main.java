@@ -17,19 +17,37 @@ public final class Main {
         ));
 
         System.out.println("Faculty: " + faculty);
-        System.out.println("Enter student id to search:");
-        var in = new Scanner(System.in);
+        System.out.print("Enter student id to search: ");
 
-        try {
-            long id = Long.parseLong(in.nextLine().trim());
-            var s = faculty.getByIdOrThrow(id);
-            System.out.println("Found: " + s);
-        } catch (NumberFormatException e) {
-            System.err.println("Invalid id format. Please enter a number.");
-            System.exit(1);
-        } catch (StudentNotFoundException e) {
-            System.err.println(e.getMessage());
-            System.exit(2);
+        try (Scanner in = new Scanner(System.in)) {
+            if (!in.hasNextLine()) {
+                System.err.println("No input provided.");
+                return;
+            }
+
+            String line = in.nextLine().trim();
+            if (line.isEmpty()) {
+                System.err.println("Empty input. Please enter a number id.");
+                return;
+            }
+
+            long id;
+            try {
+                id = Long.parseLong(line);
+            } catch (NumberFormatException e) {
+                System.err.println("Invalid id format. Please enter a number.");
+                return;
+            }
+
+            try {
+                var s = faculty.getByIdOrThrow(id);
+                System.out.println("Found: " + s);
+            } catch (StudentNotFoundException e) {
+                System.err.println(e.getMessage());
+                return;
+            }
         }
     }
 }
+
+
